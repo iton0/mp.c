@@ -2,14 +2,11 @@
 // Licensed under the MIT license.
 // See LICENSE file in the project root for full license information.
 
-#ifndef PAD_H_
-#define PAD_H_
+#ifndef UTIL_H_
+#define UTIL_H_
 
-#include <raylib.h>
-#include <stdint.h>
-
-void init_pad(void);
-void deinit_pad(void);
-void draw_pad(const bool *pressed_keys);
+#define GRID_TOTAL 16
+#define GRID_ROWS 4
+#define GRID_COLS 4
 
 #endif
