@@ -1,6 +1,6 @@
 #!/bin/sh
 git submodule update --init --recursive
-# TODO(low): wrap below in conditional if pulled from origin main remote branch
+# TODO: wrap below in conditional if pulled from origin main remote branch
 rm -rf build
 mkdir build
 cd build
