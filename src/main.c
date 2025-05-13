@@ -5,9 +5,10 @@
 #include "pad.h"
 
 int main(void) {
-  const int WIDTH = 1000, HEIGHT = 900, FPS = 30;
+  const int SCREEN_WIDTH = 1250, SCREEN_HEIGHT = 950;
+  const int FPS = 30;
 
-  InitWindow(WIDTH, HEIGHT, "Mp.c");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mp.c");
   SetTargetFPS(FPS);
 
   init_pad();
@@ -15,13 +16,16 @@ int main(void) {
   while (!WindowShouldClose()) {
     // update variables here
 
+    // drawing
     BeginDrawing();
     ClearBackground(RAYWHITE);
+
+    draw_pad();
 
     EndDrawing();
   }
 
-  deinit_pad();
+  dinit_pad();
 
   CloseWindow();
 

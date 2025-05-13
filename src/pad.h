@@ -10,11 +10,14 @@
 
 #define PAD_NUM 16
 
+// TODO: need to make pad struct
+
 void init_pad(void);
-void deinit_pad(void);
+void dinit_pad(void);
 
 const uint8_t *get_pad_keys(void);
 
+void update_pad(void);
 void draw_pad(void);
 
 #endif
