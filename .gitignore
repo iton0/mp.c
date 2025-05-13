@@ -1,0 +1,42 @@
+# CMake build directory
+build/
+
+# Object files and other build intermediates
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+*.o
+*.obj
+*.d
+
+# Packaging files (if you use CPack)
+_CPack_Packages/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+# Editor and IDE specific files
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.userprefs
+*.suo
+.cache/
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files and logs
+*.log
+*.tmp
+*~ # Backup files (e.g., from some editors)
+
+# Any bundled external libraries' build directories (if they create any)
+external/raylib/build/
+
+# Personal or sensitive information (if any)
+secrets.txt
+API_KEYS.txt

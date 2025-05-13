@@ -1,0 +1,11 @@
+[submodule "external/raylib"]
+	path = external/raylib
+	url = https://github.com/raysan5/raylib.git
+	shallow = true
+	fetchRecurseSubmodules = true
+	branch = release/5.5
+[submodule "external/raygui"]
+	path = external/raygui
+	url = https://github.com/raysan5/raygui.git
+	shallow = true
+	fetchRecurseSubmodules = true
