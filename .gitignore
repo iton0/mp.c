@@ -18,12 +18,12 @@ CPackSourceConfig.cmake
 # Editor and IDE specific files
 .vscode/
 .idea/
+.cache/
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.userprefs
 *.suo
-.cache/
 
 # Operating system specific files
 .DS_Store

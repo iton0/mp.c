@@ -8,7 +8,9 @@
 #include "util.h"
 
 int main(void) {
-  const int SCREEN_WIDTH = 1250, SCREEN_HEIGHT = 950, FPS = 30;
+  const int SCREEN_WIDTH = 1366;
+  const int SCREEN_HEIGHT = 768;
+  const int FPS = 30;
   const uint8_t PAD_KEYS[GRID_TOTAL] = {
       KEY_Q, KEY_W, KEY_E, KEY_R, // row 1
       KEY_A, KEY_S, KEY_D, KEY_F, // row 2
@@ -20,6 +22,7 @@ int main(void) {
   bool pressed_keys[GRID_TOTAL] = {false};
 
   InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mp.c");
+  SetWindowMinSize(SCREEN_WIDTH, SCREEN_HEIGHT);
   SetTargetFPS(FPS);
   InitAudioDevice();
 
