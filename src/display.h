@@ -4,6 +4,9 @@
 
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
+// NOTE: display needs to show both sounds in the directory and sounds used on
+// pads
+// TODO: need to define a directory name to hold all sounds
 
 void draw_display(void);
 
