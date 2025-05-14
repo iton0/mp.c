@@ -28,13 +28,17 @@ int main(void) {
 
   while (!WindowShouldClose()) {
     // update variables here
+    const int SCREEN_WIDTH = GetScreenWidth();
+    const int SCREEN_HEIGHT = GetScreenHeight();
+
     update_pressed_keys(pressed_keys, PAD_KEYS);
 
     // drawing
     BeginDrawing();
     ClearBackground(RAYWHITE);
 
-    draw_pad(pressed_keys);
+    const ui_frame_data PAD_DATA =
+        draw_pad(pressed_keys, SCREEN_WIDTH, SCREEN_HEIGHT);
     play_pressed_sounds(sounds, pressed_keys);
 
     EndDrawing();

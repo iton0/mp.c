@@ -3,28 +3,28 @@
 // See LICENSE file in the project root for full license information.
 
 #include "pad.h"
-#include "util.h"
 
 #include <raylib.h>
 #include <stdint.h>
 
-void draw_pad(const bool *pressed_keys) {
+const ui_frame_data draw_pad(const bool *pressed_keys, const int screen_width,
+                             const int screen_height) {
   static const Color PAD_BG_COLOR = LIGHTGRAY;
   static const Color BUTTON_COLOR = GRAY;
   static const Color OUTLINE_COLOR = DARKGRAY;
-  const int SCREEN_WIDTH = GetScreenWidth();
-  const int SCREEN_HEIGHT = GetScreenHeight();
-  const int BUTTON_WIDTH = SCREEN_HEIGHT / 8;
+  const int BUTTON_WIDTH = screen_height / 9;
   const int BUTTON_HEIGHT = BUTTON_WIDTH;
   const int BUTTON_PADDING = BUTTON_WIDTH / 8;
   const int PAD_BG_PADDING = BUTTON_PADDING * 3;
   const int PAD_BG_SIZE =
       BUTTON_WIDTH * GRID_ROWS + BUTTON_PADDING * 3 + PAD_BG_PADDING * 2;
   const float OUTLINE_THICKNESS = BUTTON_WIDTH / 20.f;
-  const float PAD_BG_X = SCREEN_WIDTH / 10.f;
-  const float PAD_BG_Y = SCREEN_HEIGHT - (PAD_BG_SIZE + BUTTON_PADDING * 2);
+  const float PAD_BG_X = screen_width / 10.f;
+  const float PAD_BG_Y = screen_height - (PAD_BG_SIZE + BUTTON_PADDING * 2);
   const Vector2 PAD_BG_SIZE_V = {PAD_BG_SIZE, PAD_BG_SIZE};
   const Vector2 PAD_BG_POS = {PAD_BG_X, PAD_BG_Y};
+  const ui_frame_data PAD_DATA =
+      create_ui_frame_data(PAD_BG_POS, PAD_BG_SIZE_V);
 
   // draw pad background
   DrawRectangleV(PAD_BG_POS, PAD_BG_SIZE_V, PAD_BG_COLOR);
@@ -48,4 +48,6 @@ void draw_pad(const bool *pressed_keys) {
       }
     }
   }
+
+  return PAD_DATA;
 }

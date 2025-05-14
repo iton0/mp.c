@@ -5,8 +5,11 @@
 #ifndef PAD_H_
 #define PAD_H_
 
+#include "util.h"
+
 #include <stdbool.h>
 
-void draw_pad(const bool *pressed_keys);
+const ui_frame_data draw_pad(const bool *pressed_keys, const int screen_width,
+                             const int screen_height);
 
 #endif

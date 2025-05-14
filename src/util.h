@@ -5,8 +5,17 @@
 #ifndef UTIL_H_
 #define UTIL_H_
 
+#include <raylib.h>
+
 #define GRID_TOTAL 16
 #define GRID_ROWS 4
 #define GRID_COLS 4
+
+typedef struct UiFrameData {
+  Vector2 position;
+  Vector2 size;
+} ui_frame_data;
+
+const ui_frame_data create_ui_frame_data(const Vector2 pos, const Vector2 size);
 
 #endif
