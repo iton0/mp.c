@@ -7,7 +7,7 @@
 
 // pad may have:
 // - sound
-// TODO: how to properly implement this embedded in struct or dynamin/heap
+// TODO: how to properly implement this embedded in struct or dynamic/heap
 // NOTE: Sounds have relatively big memory footprint and would be 16 of them
 void init_pad(void) {}
 
