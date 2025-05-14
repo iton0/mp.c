@@ -19,43 +19,8 @@ bool *get_pressed_keys(void) { return pressed_keys; }
 
 const uint8_t *get_pad_keys(void) { return PAD_KEYS; }
 
-void update_pressed_keys(bool *pressed_buttons, const uint8_t *pad_keys) {
+void update_pressed_keys(bool *pressed_keys, const uint8_t *pad_keys) {
   for (uint8_t i = 0; i < GRID_TOTAL; ++i) {
-    pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
+    pressed_keys[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
   }
-  // PERF: use this for O(1) or use the for loop for better readability O(n)
-  //
-  // int i = 0;
-  //
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
-  // ++i;
-  // pressed_buttons[i] = IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]);
 }

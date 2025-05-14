@@ -10,6 +10,6 @@
 
 const uint8_t *get_pad_keys(void);
 bool *get_pressed_keys(void);
-void update_pressed_keys(bool *pressed_buttons, const uint8_t *pad_keys);
+void update_pressed_keys(bool *pressed_keys, const uint8_t *pad_keys);
 
 #endif
