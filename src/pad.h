@@ -5,11 +5,8 @@
 #ifndef PAD_H_
 #define PAD_H_
 
-#include <raylib.h>
-#include <stdint.h>
+#include <stdbool.h>
 
-void init_pad(void);
-void deinit_pad(void);
 void draw_pad(const bool *pressed_keys);
 
 #endif

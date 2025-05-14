@@ -5,11 +5,10 @@
 #ifndef KEY_H_
 #define KEY_H_
 
+#include <raylib.h>
 #include <stdbool.h>
 #include <stdint.h>
 
-const uint8_t *get_pad_keys(void);
-bool *get_pressed_keys(void);
 void update_pressed_keys(bool *pressed_keys, const uint8_t *pad_keys);
 
 #endif
