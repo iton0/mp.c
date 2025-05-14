@@ -17,12 +17,12 @@ void draw_pad(const bool *pressed_keys) {
   const int BUTTON_WIDTH = SCREEN_HEIGHT / 8;
   const int BUTTON_HEIGHT = BUTTON_WIDTH;
   const int BUTTON_PADDING = BUTTON_WIDTH / 8;
-  const int PAD_BG_PADDING = BUTTON_PADDING * 2;
+  const int PAD_BG_PADDING = BUTTON_PADDING * 3;
   const int PAD_BG_SIZE =
       BUTTON_WIDTH * GRID_ROWS + BUTTON_PADDING * 3 + PAD_BG_PADDING * 2;
   const float OUTLINE_THICKNESS = BUTTON_WIDTH / 20.f;
   const float PAD_BG_X = SCREEN_WIDTH / 10.f;
-  const float PAD_BG_Y = SCREEN_HEIGHT - (PAD_BG_SIZE + BUTTON_PADDING);
+  const float PAD_BG_Y = SCREEN_HEIGHT - (PAD_BG_SIZE + BUTTON_PADDING * 2);
   const Vector2 PAD_BG_SIZE_V = {PAD_BG_SIZE, PAD_BG_SIZE};
   const Vector2 PAD_BG_POS = {PAD_BG_X, PAD_BG_Y};
 
