@@ -7,8 +7,6 @@
 #include "sound.h"
 
 int main(void) {
-  const int SCREEN_WIDTH = 1400;
-  const int SCREEN_HEIGHT = 1000;
   const int FPS = 30;
   const uint8_t PAD_KEYS[GRID_TOTAL] = {
       KEY_Q, KEY_W, KEY_E, KEY_R, // row 1
@@ -18,22 +16,20 @@ int main(void) {
   };
   Sound sounds[GRID_TOTAL] = {0};
   bool pressed_keys[GRID_TOTAL] = {false};
+  int screen_width = 1280;
+  int screen_height = 1024;
 
-  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mp.c");
-  SetWindowMinSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+  InitWindow(screen_width, screen_height, "Mp.c");
+  SetWindowMinSize(screen_width, screen_height);
   SetTargetFPS(FPS);
   InitAudioDevice();
 
-  while (!WindowShouldClose()) {
+  do {
     // update variables here
-    const int SCREEN_WIDTH = GetScreenWidth();
-    const int SCREEN_HEIGHT = GetScreenHeight();
     const pad_ui_data PAD_UI_DATA =
-        update_pad_ui_data(SCREEN_WIDTH, SCREEN_HEIGHT);
+        update_pad_ui_data(screen_width, screen_height);
     const display_ui_data DISPLAY_UI_DATA =
-        update_display_ui_data(PAD_UI_DATA, SCREEN_HEIGHT);
-
-    update_pressed_keys(pressed_keys, PAD_KEYS);
+        update_display_ui_data(PAD_UI_DATA, screen_height);
 
     // drawing
     BeginDrawing();
@@ -45,7 +41,11 @@ int main(void) {
     draw_display(DISPLAY_UI_DATA);
 
     EndDrawing();
-  }
+
+    update_pressed_keys(pressed_keys, PAD_KEYS);
+    screen_width = GetScreenWidth();
+    screen_height = GetScreenHeight();
+  } while (!WindowShouldClose());
 
   CloseAudioDevice();
   CloseWindow();

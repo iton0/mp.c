@@ -7,6 +7,6 @@
 
 void update_pressed_keys(bool *pressed_keys, const uint8_t *pad_keys) {
   for (uint8_t i = 0; i < GRID_TOTAL; ++i) {
-    pressed_keys[i] = (IsKeyDown(pad_keys[i]) || IsKeyPressed(pad_keys[i]));
+    pressed_keys[i] = (IsKeyPressed(pad_keys[i]) || IsKeyDown(pad_keys[i]));
   }
 }

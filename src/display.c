@@ -6,14 +6,17 @@
 
 const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
                                              const int screen_height) {
-  const int BG_WIDTH = ui_data.bg.size.x;
-  const int BG_HEIGHT = screen_height / 5.5;
-  const int MAIN_WIDTH = BG_WIDTH / 1.35;
-  const int MAIN_HEIGHT = BG_HEIGHT / 1.5;
-  const float BG_X = ui_data.bg.position.x;
-  const float BG_Y = ui_data.bg.position.y - (BG_HEIGHT * 1.75);
-  const float MAIN_X = BG_X + BG_WIDTH / 7.f;
-  const float MAIN_Y = BG_Y + BG_HEIGHT / 7.f;
+  const ui_frame_data pad_bg = ui_data.bg;
+  const int BG_WIDTH = pad_bg.size.x;
+  const int BG_HEIGHT = screen_height / 6.25;
+  const float MAIN_OFFSET_X = ui_data.button_size.x / 1.15;
+  const float MAIN_OFFSET_Y = ui_data.button_padding * 1.75;
+  const int MAIN_WIDTH = BG_WIDTH - MAIN_OFFSET_X * 2;
+  const int MAIN_HEIGHT = BG_HEIGHT - MAIN_OFFSET_Y * 2;
+  const float BG_X = pad_bg.position.x;
+  const float BG_Y = (pad_bg.position.y - BG_HEIGHT) / 2;
+  const float MAIN_X = BG_X + MAIN_OFFSET_X;
+  const float MAIN_Y = BG_Y + MAIN_OFFSET_Y;
   const Vector2 BG_POS = {BG_X, BG_Y};
   const Vector2 BG_SIZE = {BG_WIDTH, BG_HEIGHT};
   const Vector2 MAIN_POS = {MAIN_X, MAIN_Y};

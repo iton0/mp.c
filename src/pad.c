@@ -8,10 +8,10 @@
 
 const pad_ui_data update_pad_ui_data(const int screen_width,
                                      const int screen_height) {
-  const int BUTTON_WIDTH = screen_height / 9;
+  const int BUTTON_WIDTH = screen_height / 10.5;
   const int BUTTON_HEIGHT = BUTTON_WIDTH;
-  const int BUTTON_PADDING = BUTTON_WIDTH / 8;
-  const int BG_PADDING = BUTTON_PADDING * 3;
+  const int BG_PADDING = BUTTON_WIDTH / 2;
+  const int BUTTON_PADDING = BG_PADDING / 3;
   const int BG_SIZE =
       BUTTON_WIDTH * GRID_ROWS + BUTTON_PADDING * 3 + BG_PADDING * 2;
   const float OUTLINE_THIC = BUTTON_WIDTH / 16.f;
