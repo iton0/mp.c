@@ -5,7 +5,6 @@
 #ifndef KEY_H_
 #define KEY_H_
 
-#include <raylib.h>
 #include <stdbool.h>
 #include <stdint.h>
 

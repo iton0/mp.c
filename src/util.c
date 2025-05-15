@@ -4,7 +4,7 @@
 
 #include "util.h"
 
-const ui_frame_data create_ui_frame_data(const Vector2 pos,
+const ui_frame_data create_ui_frame_data(const Vector2 position,
                                          const Vector2 size) {
-  return (ui_frame_data){pos, size};
+  return (ui_frame_data){position, size};
 }

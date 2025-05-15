@@ -16,6 +16,7 @@ typedef struct UiFrameData {
   Vector2 size;
 } ui_frame_data;
 
-const ui_frame_data create_ui_frame_data(const Vector2 pos, const Vector2 size);
+const ui_frame_data create_ui_frame_data(const Vector2 position,
+                                         const Vector2 size);
 
 #endif

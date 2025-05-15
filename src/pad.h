@@ -7,9 +7,17 @@
 
 #include "util.h"
 
-#include <stdbool.h>
+typedef struct PadUiData {
+  ui_frame_data bg;
+  Vector2 button_size;
+  int bg_padding;
+  int button_padding;
+  float outline_thickness;
+} pad_ui_data;
 
-const ui_frame_data draw_pad(const bool *pressed_keys, const int screen_width,
-                             const int screen_height);
+const pad_ui_data update_pad_ui_data(const int screen_width,
+                                     const int screen_height);
+
+void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys);
 
 #endif

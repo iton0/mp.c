@@ -8,7 +8,6 @@
 #include <raylib.h>
 #include <stdint.h>
 
-// TODO: what other functions do i need for sound?
 void add_sound(const char *file, Sound *sounds, const uint8_t idx);
 void remove_sound(Sound *sounds, const uint8_t idx);
 void play_sound(const Sound *sounds, const uint8_t idx);

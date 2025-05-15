@@ -8,6 +8,16 @@
 // pads
 // TODO: need to define a directory name to hold all sounds
 
-void draw_display(void);
+#include "pad.h"
+
+typedef struct DisplayUiData {
+  ui_frame_data bg;
+  ui_frame_data main;
+} display_ui_data;
+
+const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
+                                             const int screen_height);
+
+void draw_display(const display_ui_data ui_data);
 
 #endif
