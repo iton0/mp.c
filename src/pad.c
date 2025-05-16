@@ -14,7 +14,7 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
   const int BUTTON_PADDING = BG_PADDING / 3;
   const int BG_SIZE =
       BUTTON_WIDTH * GRID_ROWS + BUTTON_PADDING * 3 + BG_PADDING * 2;
-  const float OUTLINE_THIC = BUTTON_WIDTH / 16.f;
+  const float OUTLINE_THICKNESS = BUTTON_WIDTH / 16.f;
   const float BG_X = screen_width / 10.f;
   const float BG_Y = screen_height - (BG_SIZE + BUTTON_PADDING);
   const Vector2 BG_POS = {BG_X, BG_Y};
@@ -26,13 +26,13 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
                        .button_size = BUTTON_SIZE,
                        .bg_padding = BG_PADDING,
                        .button_padding = BUTTON_PADDING,
-                       .outline_thickness = OUTLINE_THIC};
+                       .outline_thickness = OUTLINE_THICKNESS};
 }
 
 void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
-  static const Color BG_COLOR = LIGHTGRAY;
-  static const Color BUTTON_COLOR = GRAY;
-  static const Color OUTLINE_COLOR = DARKGRAY;
+  static const Color BG_COLOR = GRAY;
+  static const Color OUTLINE_COLOR = BG_COLOR;
+  static const Color BUTTON_COLOR = LIGHTGRAY; // TODO: make button custom gray
   const ui_frame_data BG = ui_data.bg;
   const Vector2 BUTTON_SIZE = ui_data.button_size;
   const int BG_PADDING = ui_data.bg_padding;

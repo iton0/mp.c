@@ -31,6 +31,8 @@ int main(void) {
     const display_ui_data DISPLAY_UI_DATA =
         update_display_ui_data(PAD_UI_DATA, screen_height);
 
+    update_pressed_keys(pressed_keys, PAD_KEYS);
+
     // drawing
     BeginDrawing();
     ClearBackground(RAYWHITE);
@@ -42,7 +44,6 @@ int main(void) {
 
     EndDrawing();
 
-    update_pressed_keys(pressed_keys, PAD_KEYS);
     screen_width = GetScreenWidth();
     screen_height = GetScreenHeight();
   } while (!WindowShouldClose());
