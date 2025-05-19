@@ -40,6 +40,4 @@ void draw_display(const display_ui_data ui_data) {
 
   // draw main display
   DrawRectangleV(ui_data.main.position, ui_data.main.size, CUSTOM_BLUE);
-
-  // TODO: should i put the listing logic here or make it seperate file?
 }
