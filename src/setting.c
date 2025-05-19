@@ -7,8 +7,12 @@
 #include <stdint.h>
 
 const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
-  const Vector2 POS = ui_data.main.position;
-  const int FONT_SIZE = ui_data.main.size.y / TEXT_ROWS;
+  static const int OFFSET_X = 3;
+  static const int OFFSET_Y = 5;
+  const ui_frame_data MAIN = ui_data.main;
+  const Vector2 MAIN_POS = MAIN.position;
+  const Vector2 POS = {MAIN_POS.x + OFFSET_X, MAIN_POS.y + OFFSET_Y};
+  const int FONT_SIZE = (MAIN.size.y - OFFSET_Y) / TEXT_ROWS;
 
   return (setting_ui_data){
       .position = POS,
@@ -18,12 +22,13 @@ const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
 
 // TODO: needs to take both ui data and regular information data
 void draw_settings(const setting_ui_data ui_data) {
+  static const Color COLOR = {255, 255, 255, 150};
   const Vector2 POS = ui_data.position;
   const int FONT_SIZE = ui_data.font_size;
 
   // TODO: needs to make data displaying dynamic and limit text length to
   // display size
   for (uint8_t i = 0; i < TEXT_ROWS; ++i) {
-    DrawText("HELLO", POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE, RAYWHITE);
+    DrawText("HELLO", POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE, COLOR);
   }
 }
