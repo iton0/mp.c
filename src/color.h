@@ -1,3 +1,7 @@
+// Copyright (c) 2025 iton0. All rights reserved.
+// Licensed under the MIT license.
+// See LICENSE file in the project root for full license information.
+
 #ifndef COLOR_H_
 #define COLOR_H_
 
