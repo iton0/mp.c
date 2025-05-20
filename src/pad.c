@@ -3,6 +3,7 @@
 // See LICENSE file in the project root for full license information.
 
 #include "pad.h"
+#include "color.h"
 
 #include <stdint.h>
 
@@ -31,16 +32,13 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
 
 void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
 
-  static const Color BUTTON_COLOR = {113, 119, 120, 255};
-  static const Color BG_COLOR = {149, 156, 162, 255};
-  static const Color OUTLINE_COLOR = {23, 20, 15, 100};
   const ui_frame_data BG = ui_data.bg;
   const Vector2 BUTTON_SIZE = ui_data.button_size;
   const int BG_PADDING = ui_data.bg_padding;
   const int BUTTON_PADDING = ui_data.button_padding;
 
   // draw pad background
-  DrawRectangleV(BG.position, BG.size, BG_COLOR);
+  DrawRectangleV(BG.position, BG.size, PAD_BG);
 
   // draw buttons
   for (uint8_t row_idx = 0; row_idx < GRID_ROWS; ++row_idx) {
@@ -51,11 +49,11 @@ void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
       const float BUTTON_Y = BG.position.y + BG_PADDING +
                              (row_idx * (BUTTON_SIZE.y + BUTTON_PADDING));
 
-      DrawRectangleV((Vector2){BUTTON_X, BUTTON_Y}, BUTTON_SIZE, BUTTON_COLOR);
+      DrawRectangleV((Vector2){BUTTON_X, BUTTON_Y}, BUTTON_SIZE, PAD_BUTTON);
       if (pressed_keys[BUTTON_IDX]) { // outline pressed button
         const Rectangle OUTLINE = {BUTTON_X, BUTTON_Y, BUTTON_SIZE.x,
                                    BUTTON_SIZE.y};
-        DrawRectangleLinesEx(OUTLINE, ui_data.outline_thickness, OUTLINE_COLOR);
+        DrawRectangleLinesEx(OUTLINE, ui_data.outline_thickness, PAD_OUTLINE);
       }
     }
   }
