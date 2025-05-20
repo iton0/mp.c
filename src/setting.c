@@ -22,7 +22,7 @@ const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
 
 // TODO: needs to take both ui data and regular information data
 void draw_settings(const setting_ui_data ui_data) {
-  static const Color COLOR = {255, 255, 255, 150};
+  static const Color COLOR = {130, 248, 250, 255};
   const Vector2 POS = ui_data.position;
   const int FONT_SIZE = ui_data.font_size;
 

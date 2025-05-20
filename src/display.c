@@ -32,8 +32,8 @@ const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
 }
 
 void draw_display(const display_ui_data ui_data) {
-  static const Color CUSTOM_BLACK = {0, 0, 0, 195};
-  static const Color CUSTOM_BLUE = {0, 121, 241, 130};
+  static const Color CUSTOM_BLACK = {16, 25, 31, 255};
+  static const Color CUSTOM_BLUE = {0, 60, 255, 255};
 
   // draw display background
   DrawRectangleV(ui_data.bg.position, ui_data.bg.size, CUSTOM_BLACK);

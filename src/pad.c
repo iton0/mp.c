@@ -30,10 +30,10 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
 }
 
 void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
-  // TODO: update pad button and bg color
-  static const Color BUTTON_COLOR = {130, 130, 130, 175};
-  static const Color BG_COLOR = {120, 120, 120, 125};
-  static const Color OUTLINE_COLOR = BG_COLOR;
+
+  static const Color BUTTON_COLOR = {113, 119, 120, 255};
+  static const Color BG_COLOR = {149, 156, 162, 255};
+  static const Color OUTLINE_COLOR = {23, 20, 15, 100};
   const ui_frame_data BG = ui_data.bg;
   const Vector2 BUTTON_SIZE = ui_data.button_size;
   const int BG_PADDING = ui_data.bg_padding;

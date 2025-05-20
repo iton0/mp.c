@@ -14,6 +14,7 @@ int main(void) {
       KEY_Z, KEY_X, KEY_C, KEY_V, // row 3
       KEY_U, KEY_I, KEY_O, KEY_P, // row 4
   };
+  const Color BG = {221, 221, 221, 255};
   const int FPS = 30;
   Sound sounds[GRID_TOTAL] = {0};
   bool pressed_keys[GRID_TOTAL] = {false};
@@ -40,7 +41,7 @@ int main(void) {
 
     // drawing
     BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BG);
 
     play_pressed_sounds(sounds, pressed_keys);
 
