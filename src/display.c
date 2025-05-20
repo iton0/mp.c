@@ -34,8 +34,8 @@ const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
 void draw_display(const display_ui_data ui_data) {
 
   // draw display background
-  DrawRectangleV(ui_data.bg.position, ui_data.bg.size, DISPLAY_BG);
+  DrawRectangleV(ui_data.bg.position, ui_data.bg.size, DISPLAY_BG_COLOR);
 
   // draw main display
-  DrawRectangleV(ui_data.main.position, ui_data.main.size, DISPLAY_MAIN);
+  DrawRectangleV(ui_data.main.position, ui_data.main.size, DISPLAY_MAIN_COLOR);
 }

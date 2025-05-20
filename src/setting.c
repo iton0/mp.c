@@ -8,10 +8,10 @@
 #include <stdint.h>
 
 const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
-  static const int OFFSET_X = 3;
-  static const int OFFSET_Y = 5;
   const ui_frame_data MAIN = ui_data.main;
   const Vector2 MAIN_POS = MAIN.position;
+  const int OFFSET_X = 3;
+  const int OFFSET_Y = 5;
   const Vector2 POS = {MAIN_POS.x + OFFSET_X, MAIN_POS.y + OFFSET_Y};
   const int FONT_SIZE = (MAIN.size.y - OFFSET_Y) / TEXT_ROWS;
 
@@ -29,6 +29,7 @@ void draw_settings(const setting_ui_data ui_data) {
   // TODO: needs to make data displaying dynamic and limit text length to
   // display size
   for (uint8_t i = 0; i < TEXT_ROWS; ++i) {
-    DrawText("HELLO", POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE, DISPLAY_TEXT);
+    DrawText("HELLO", POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE,
+             DISPLAY_TEXT_COLOR);
   }
 }
