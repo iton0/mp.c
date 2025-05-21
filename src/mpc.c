@@ -9,7 +9,7 @@
 #include "setting.h"
 #include "sound.h"
 
-void run_mpc(void) {
+int run_mpc(void) {
   const uint8_t PAD_KEYS[GRID_TOTAL] = {
       KEY_Q, KEY_W, KEY_E, KEY_R, // row 1
       KEY_A, KEY_S, KEY_D, KEY_F, // row 2
@@ -21,6 +21,10 @@ void run_mpc(void) {
   bool pressed_keys[GRID_TOTAL] = {false};
   int screen_width = 1280;
   int screen_height = 1024;
+
+  if (!ChangeDirectory(GetApplicationDirectory())) {
+    return -1; // unsuccessful directory change
+  }
 
   InitWindow(screen_width, screen_height, "Mp.c");
   SetWindowMinSize(screen_width, screen_height);
@@ -55,4 +59,6 @@ void run_mpc(void) {
 
   CloseAudioDevice();
   CloseWindow();
+
+  return 0;
 }

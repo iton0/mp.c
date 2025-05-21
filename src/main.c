@@ -4,8 +4,4 @@
 
 #include "mpc.h"
 
-int main(void) {
-  run_mpc();
-
-  return 0;
-}
+int main(void) { return run_mpc(); }

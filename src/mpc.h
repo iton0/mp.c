@@ -5,6 +5,6 @@
 #ifndef MPC_H_
 #define MPC_H_
 
-void run_mpc(void);
+int run_mpc(void);
 
 #endif
