@@ -1,12 +1,96 @@
 #!/bin/sh
-git submodule update --init --recursive
-# TODO: wrap below in conditional if pulled from origin/upstream main remote branch
-pushd .
-PROJECT_ROOT=$(git rev-parse --show-toplevel)
-cd "$PROJECT_ROOT"
-rm -rf build
-mkdir build
-cd build
-cmake ..
-make
-popd
+# Configuration: Set the specific remote URL you want to match.
+# This script will try to match against both SSH and HTTPS versions.
+SPECIFIC_REMOTE_SSH="git@github.com:iton0/mp.c.git"
+SPECIFIC_REMOTE_HTTPS="https://github.com/iton0/mp.c.git"
+# --- Logic to check the remote URL ---
+# Get the name of the current branch
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# Get the name of the remote that the current branch is tracking
+# This will be empty if the branch is not tracking a remote or if it's a detached HEAD.
+TRACKING_REMOTE=$(git config --get branch."$CURRENT_BRANCH".remote)
+# Initialize the actual remote URL variable
+ACTUAL_REMOTE_URL=""
+if [ -n "$TRACKING_REMOTE" ]; then
+    # If a tracking remote is found, get its URL
+    ACTUAL_REMOTE_URL=$(git config --get remote."$TRACKING_REMOTE".url)
+fi
+echo "Current branch '$CURRENT_BRANCH' is tracking remote '$TRACKING_REMOTE'."
+echo "Tracked remote URL: '$ACTUAL_REMOTE_URL'"
+echo "Expected remote URLs (SSH/HTTPS): '$SPECIFIC_REMOTE_SSH' or '$SPECIFIC_REMOTE_HTTPS'"
+# Check if the actual remote URL matches either the SSH or HTTPS specific remote URL
+if [ "$ACTUAL_REMOTE_URL" = "$SPECIFIC_REMOTE_SSH" ] || [ "$ACTUAL_REMOTE_URL" = "$SPECIFIC_REMOTE_HTTPS" ]; then
+    echo "Remote URL matches the specified URL. Proceeding with post-merge actions."
+    # Always update submodules after a merge.
+    # This ensures that if the main repository's recorded submodule commits have changed,
+    # your local submodules are updated to match.
+    # --init: Initializes new submodules if they were added in the merge.
+    # --recursive: Updates nested submodules as well.
+    git submodule update --init --recursive
+    # Determine if a project rebuild is necessary.
+    # A rebuild is needed if source code, build system files, or submodule references have changed.
+    # Get the commit before the merge (ORIG_HEAD) and the new HEAD after the merge.
+    OLD_HEAD=$(git rev-parse ORIG_HEAD)
+    NEW_HEAD=$(git rev-parse HEAD)
+    # List all files that were changed (added, modified, deleted) between the two commits.
+    # -r: Recurse into subtrees.
+    # --name-only: Only show the names of the changed files.
+    CHANGED_FILES=$(git diff-tree -r --name-only "$OLD_HEAD" "$NEW_HEAD")
+    REBUILD_NEEDED=false
+    # Iterate through the changed files to determine if any require a rebuild.
+    for file in $CHANGED_FILES; do
+        case "$file" in
+            # Add your project's source code file extensions here.
+            # Example: C/C++, Go, Rust, Python, etc.
+            *.c|*.cpp|*.h|*.hpp|*.go|*.rs|*.py)
+                REBUILD_NEEDED=true
+                break
+                ;;
+            # Add your build system configuration files here.
+            # Example: CMakeLists.txt, Makefile, *.cmake files.
+            CMakeLists.txt|Makefile|*.cmake)
+                REBUILD_NEEDED=true
+                break
+                ;;
+            # If the .gitmodules file itself changes, it means submodule definitions
+            # (like URL, path, or new/removed submodules) have been altered,
+            # which definitely warrants a rebuild.
+            .gitmodules)
+                REBUILD_NEEDED=true
+                break
+                ;;
+            # If any file within the 'external/' directory (where submodules are) changes,
+            # it implies a submodule's content or commit reference has been updated.
+            # This is crucial for catching submodule updates that 'git submodule update' applies.
+            external/*)
+                REBUILD_NEEDED=true
+                break
+                ;;
+            # Add any other specific files or directories that, if changed,
+            # should always trigger a full project rebuild.
+            # For example: "config/*.toml", "assets/*" etc.
+        esac
+    done
+    # Proceed with the build only if REBUILD_NEEDED is true.
+    if [ "$REBUILD_NEEDED" = true ]; then
+        echo "Changes detected in build-relevant files or submodules. Rebuilding project..."
+        # Save current directory, navigate to project root, and perform build steps.
+        pushd . > /dev/null # Redirect stdout to /dev/null to keep it clean
+        PROJECT_ROOT=$(git rev-parse --show-toplevel)
+        cd "$PROJECT_ROOT" || { echo "Error: Could not change to project root."; exit 1; }
+        # Clean and re-create build directory
+        rm -rf build
+        mkdir build
+        cd build || { echo "Error: Could not change to build directory."; exit 1; }
+        # Run CMake and Make
+        cmake .. || { echo "Error: CMake failed."; exit 1; }
+        make || { echo "Error: Make failed."; exit 1; }
+        popd > /dev/null # Restore previous directory
+        echo "Project rebuild complete."
+    else
+        echo "No build-relevant changes detected. Skipping project rebuild."
+    fi
+else
+    echo "Remote URL does not match the specified URL. Skipping post-merge actions."
+fi
+exit 0

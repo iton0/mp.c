@@ -4,7 +4,7 @@
 2. After cloning the repo add the raylib submodule:
 `git submodule update --init --recursive`
 3. Finally make the build directory:
-`mkdir -p build`
+`mkdir build`
 
 # Building
 Run the following commands in the terminal:
