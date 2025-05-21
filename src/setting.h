@@ -7,7 +7,7 @@
 
 #include "display.h"
 
-#define TEXT_ROWS 8
+#define TEXT_ROWS 5
 
 typedef struct setting_ui_data {
   Vector2 position;
