@@ -13,6 +13,7 @@
 typedef struct DisplayUiData {
   ui_frame_data bg;
   ui_frame_data main;
+  int main_outline_thickness;
 } display_ui_data;
 
 const display_ui_data update_display_ui_data(const pad_ui_data ui_data,

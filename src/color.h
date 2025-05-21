@@ -11,6 +11,7 @@
 #define PAD_OUTLINE_COLOR (Color){23, 20, 15, 100}
 #define DISPLAY_BG_COLOR (Color){16, 25, 31, 255}
 #define DISPLAY_MAIN_COLOR (Color){0, 60, 255, 255}
+#define DISPLAY_MAIN_OUTLINE_COLOR (Color){0, 164, 255, 255}
 #define DISPLAY_TEXT_COLOR (Color){130, 248, 250, 255}
 
 #endif
