@@ -13,7 +13,7 @@ const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
   const float MAIN_OFFSET_Y = ui_data.button_padding * 1.75;
   const int MAIN_WIDTH = BG_WIDTH - MAIN_OFFSET_X * 2;
   const int MAIN_HEIGHT = BG_HEIGHT - MAIN_OFFSET_Y * 2;
-  const int MAIN_OUTLINE_THICKNESS = MAIN_HEIGHT / 14;
+  const int MAIN_OUTLINE_THICKNESS = MAIN_HEIGHT / 18;
   const float BG_X = ui_data.bg.position.x;
   const float BG_Y = (ui_data.bg.position.y - BG_HEIGHT) / 2;
   const float MAIN_X = BG_X + MAIN_OFFSET_X;
