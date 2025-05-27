@@ -11,6 +11,12 @@
 #define GRID_ROWS 4
 #define GRID_COLS 4
 
+#ifdef _WIN32
+#define PATH_SEPARATOR "\\"
+#else
+#define PATH_SEPARATOR "/"
+#endif
+
 typedef struct UiFrameData {
   Vector2 position;
   Vector2 size;

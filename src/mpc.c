@@ -5,9 +5,12 @@
 #include "mpc.h"
 #include "color.h"
 #include "display.h"
+#include "info.h"
 #include "key.h"
 #include "setting.h"
 #include "sound.h"
+
+#include <string.h>
 
 int run_mpc(void) {
   const uint8_t PAD_KEYS[GRID_TOTAL] = {
@@ -16,6 +19,7 @@ int run_mpc(void) {
       KEY_Z, KEY_X, KEY_C, KEY_V, // row 3
       KEY_U, KEY_I, KEY_O, KEY_P, // row 4
   };
+  const char *INFO_DATA[TEXT_ROWS] = {NULL};
   const int FPS = 30;
   Sound sounds[GRID_TOTAL] = {0};
   bool pressed_keys[GRID_TOTAL] = {false};
@@ -31,6 +35,8 @@ int run_mpc(void) {
   SetTargetFPS(FPS);
   InitAudioDevice();
 
+  add_sound("assets/audio/test-piano.wav", sounds, 0);
+
   while (!WindowShouldClose()) {
     // update variables here
     screen_width = GetScreenWidth();
@@ -43,6 +49,7 @@ int run_mpc(void) {
         update_setting_ui_data(DISPLAY_UI_DATA);
 
     update_pressed_keys(pressed_keys, PAD_KEYS);
+    update_info_data(INFO_DATA);
 
     // drawing
     BeginDrawing();
@@ -52,7 +59,7 @@ int run_mpc(void) {
 
     draw_pad(PAD_UI_DATA, pressed_keys);
     draw_display(DISPLAY_UI_DATA);
-    draw_settings(SETTING_UI_DATA);
+    draw_settings(SETTING_UI_DATA, INFO_DATA);
 
     EndDrawing();
   }

@@ -4,6 +4,7 @@
 
 #include "setting.h"
 #include "color.h"
+#include "info.h"
 
 #include <stdint.h>
 
@@ -21,15 +22,13 @@ const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
   };
 }
 
-// TODO: needs to take both ui data and regular information data
-void draw_settings(const setting_ui_data ui_data) {
+void draw_settings(const setting_ui_data ui_data, const char **info_data) {
   const Vector2 POS = ui_data.position;
   const int FONT_SIZE = ui_data.font_size;
 
-  // TODO: needs to make data displaying dynamic and limit text length to
-  // display size
+  // TODO: need to make data display dynamic and limit text len to display size
   for (uint8_t i = 0; i < TEXT_ROWS; ++i) {
-    DrawText("HELLO", POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE,
+    DrawText(info_data[i], POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE,
              DISPLAY_TEXT_COLOR);
   }
 }

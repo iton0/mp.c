@@ -23,9 +23,10 @@ void play_sound(const Sound *sounds, const uint8_t idx) {
 }
 
 void play_pressed_sounds(Sound *sounds, const bool *pressed_keys) {
-  for (uint8_t idx = 0; idx < GRID_TOTAL; ++idx) {
-    if (pressed_keys[idx]) {
-      play_sound(sounds, idx);
+  for (uint8_t i = 0; i < GRID_TOTAL; ++i) {
+    // TODO: update to account when key is held down; should not play sound
+    if (pressed_keys[i]) {
+      play_sound(sounds, i);
     }
   }
 }
