@@ -5,9 +5,11 @@
 #ifndef INFO_H_
 #define INFO_H_
 
-#define TEXT_ROWS 5
+#include <raylib.h>
 
-// TODO: will need to update to take key input as params
-const char **update_info_data(const char **info_data);
+const FilePathList get_sound_files(void);
+
+const char **update_info_data(const char **info_data,
+                              const FilePathList *files_ptr, const int offset);
 
 #endif

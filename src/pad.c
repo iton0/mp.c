@@ -30,12 +30,12 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
                        .outline_thickness = OUTLINE_THICKNESS};
 }
 
-void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
+void draw_pad(const pad_ui_data *ui_data_ptr, const bool *pressed_keys) {
 
-  const ui_frame_data BG = ui_data.bg;
-  const Vector2 BUTTON_SIZE = ui_data.button_size;
-  const int BG_PADDING = ui_data.bg_padding;
-  const int BUTTON_PADDING = ui_data.button_padding;
+  const ui_frame_data BG = ui_data_ptr->bg;
+  const Vector2 BUTTON_SIZE = ui_data_ptr->button_size;
+  const int BG_PADDING = ui_data_ptr->bg_padding;
+  const int BUTTON_PADDING = ui_data_ptr->button_padding;
 
   // draw pad background
   DrawRectangleV(BG.position, BG.size, PAD_BG_COLOR);
@@ -54,7 +54,7 @@ void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys) {
       if (pressed_keys[BUTTON_IDX]) { // outline pressed button
         const Rectangle OUTLINE = {BUTTON_X, BUTTON_Y, BUTTON_SIZE.x,
                                    BUTTON_SIZE.y};
-        DrawRectangleLinesEx(OUTLINE, ui_data.outline_thickness,
+        DrawRectangleLinesEx(OUTLINE, ui_data_ptr->outline_thickness,
                              PAD_OUTLINE_COLOR);
       }
     }

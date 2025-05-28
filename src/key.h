@@ -5,9 +5,12 @@
 #ifndef KEY_H_
 #define KEY_H_
 
+#include <raylib.h>
 #include <stdbool.h>
 #include <stdint.h>
 
-void update_pressed_keys(bool *pressed_keys, const uint8_t *pad_keys);
+const int perform_setting_keys(const FilePathList *files_ptr);
+
+void update_pressed_pad_keys(bool *pressed_pad_keys, const uint8_t *pad_keys);
 
 #endif

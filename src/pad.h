@@ -18,6 +18,6 @@ typedef struct PadUiData {
 const pad_ui_data update_pad_ui_data(const int screen_width,
                                      const int screen_height);
 
-void draw_pad(const pad_ui_data ui_data, const bool *pressed_keys);
+void draw_pad(const pad_ui_data *ui_data_ptr, const bool *pressed_keys);
 
 #endif

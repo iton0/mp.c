@@ -11,6 +11,6 @@
 void add_sound(const char *file, Sound *sounds, const uint8_t idx);
 void remove_sound(Sound *sounds, const uint8_t idx);
 void play_sound(const Sound *sounds, const uint8_t idx);
-void play_pressed_sounds(Sound *sounds, const bool *pressed_keys);
+void play_pressed_sounds(const Sound *sounds, const bool *pressed_keys);
 
 #endif

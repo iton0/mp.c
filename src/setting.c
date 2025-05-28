@@ -4,17 +4,17 @@
 
 #include "setting.h"
 #include "color.h"
-#include "info.h"
 
 #include <stdint.h>
 
-const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
-  const ui_frame_data MAIN = ui_data.main;
+const setting_ui_data
+update_setting_ui_data(const display_ui_data *ui_data_ptr) {
+  const ui_frame_data MAIN = ui_data_ptr->main;
   const Vector2 MAIN_POS = MAIN.position;
-  const int OFFSET_X = ui_data.main_outline_thickness;
+  const int OFFSET_X = ui_data_ptr->main_outline_thickness;
   const int OFFSET_Y = OFFSET_X;
   const Vector2 POS = {MAIN_POS.x + OFFSET_X, MAIN_POS.y + OFFSET_Y};
-  const int FONT_SIZE = (MAIN.size.y - OFFSET_Y * 2) / TEXT_ROWS;
+  const int FONT_SIZE = (MAIN.size.y - OFFSET_Y * 2) / DISPLAY_TEXT_ROWS;
 
   return (setting_ui_data){
       .position = POS,
@@ -22,12 +22,11 @@ const setting_ui_data update_setting_ui_data(const display_ui_data ui_data) {
   };
 }
 
-void draw_settings(const setting_ui_data ui_data, const char **info_data) {
-  const Vector2 POS = ui_data.position;
-  const int FONT_SIZE = ui_data.font_size;
+void draw_settings(const setting_ui_data *ui_data_ptr, const char **info_data) {
+  const Vector2 POS = ui_data_ptr->position;
+  const int FONT_SIZE = ui_data_ptr->font_size;
 
-  // TODO: need to make data display dynamic and limit text len to display size
-  for (uint8_t i = 0; i < TEXT_ROWS; ++i) {
+  for (uint8_t i = 0; i < DISPLAY_TEXT_ROWS; ++i) {
     DrawText(info_data[i], POS.x, POS.y + (FONT_SIZE * i), FONT_SIZE,
              DISPLAY_TEXT_COLOR);
   }

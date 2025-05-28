@@ -10,6 +10,7 @@
 #define GRID_TOTAL 16
 #define GRID_ROWS 4
 #define GRID_COLS 4
+#define DISPLAY_TEXT_ROWS 5
 
 #ifdef _WIN32
 #define PATH_SEPARATOR "\\"

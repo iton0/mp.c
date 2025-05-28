@@ -13,9 +13,9 @@ typedef struct DisplayUiData {
   int main_outline_thickness;
 } display_ui_data;
 
-const display_ui_data update_display_ui_data(const pad_ui_data ui_data,
+const display_ui_data update_display_ui_data(const pad_ui_data *ui_data_ptr,
                                              const int screen_height);
 
-void draw_display(const display_ui_data ui_data);
+void draw_display(const display_ui_data *ui_data_ptr);
 
 #endif
