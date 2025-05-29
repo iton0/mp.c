@@ -21,11 +21,10 @@ const FilePathList get_sound_files(void) {
   return files;
 }
 
-// TODO: make this conditionally run when modifying the sound directory
 const char **update_info_data(const char **info_data,
                               const FilePathList *files_ptr, const int offset) {
 
-  for (uint8_t i = 0; i < DISPLAY_TEXT_ROWS; ++i) {
+  for (uint8_t i = 0; i < DISPLAY_ROWS; ++i) {
     info_data[i] = GetFileName(files_ptr->paths[i + offset]);
   }
 

@@ -9,8 +9,8 @@ const int perform_setting_keys(const FilePathList *files_ptr) {
   static int offset = 0;
 
   if (IsKeyPressed(KEY_J) || IsKeyPressed(KEY_DOWN)) {
-    offset = offset + DISPLAY_TEXT_ROWS > files_ptr->count - 1
-                 ? files_ptr->count - DISPLAY_TEXT_ROWS
+    offset = offset + DISPLAY_ROWS > files_ptr->count - 1
+                 ? files_ptr->count - DISPLAY_ROWS
                  : offset + 1;
   }
   if (IsKeyPressed(KEY_K) || IsKeyPressed(KEY_UP)) {

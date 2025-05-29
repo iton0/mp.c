@@ -15,7 +15,7 @@ const pad_ui_data update_pad_ui_data(const int screen_width,
   const int BUTTON_PADDING = BG_PADDING / 3;
   const int BG_SIZE =
       BUTTON_WIDTH * GRID_ROWS + BUTTON_PADDING * 3 + BG_PADDING * 2;
-  const float OUTLINE_THICKNESS = BUTTON_WIDTH / 25.f;
+  const float OUTLINE_THICKNESS = BUTTON_WIDTH / 20.f;
   const float BG_X = screen_width / 10.f;
   const float BG_Y = screen_height - (BG_SIZE + BUTTON_PADDING);
   const Vector2 BG_POS = {BG_X, BG_Y};

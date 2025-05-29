@@ -13,30 +13,32 @@
 #include <string.h>
 
 int run_mpc(void) {
+  if (!ChangeDirectory(GetApplicationDirectory())) {
+    return -1; // unsuccessful directory change
+  }
+
   const uint8_t PAD_KEYS[GRID_TOTAL] = {
       KEY_Q, KEY_W, KEY_E, KEY_R, // row 1
       KEY_A, KEY_S, KEY_D, KEY_F, // row 2
       KEY_Z, KEY_X, KEY_C, KEY_V, // row 3
       KEY_U, KEY_I, KEY_O, KEY_P, // row 4
   };
-  const char *INFO_DATA[DISPLAY_TEXT_ROWS] = {NULL};
+  const char *INFO_DATA[DISPLAY_ROWS] = {NULL};
   const int FPS = 30;
   Sound sounds[GRID_TOTAL] = {0};
   bool pressed_pad_keys[GRID_TOTAL] = {false};
   int screen_width = 1280;
   int screen_height = 1024;
 
-  if (!ChangeDirectory(GetApplicationDirectory())) {
-    return -1; // unsuccessful directory change
-  }
-
-  InitWindow(screen_width, screen_height, "Mp.c");
+  InitWindow(screen_width, screen_height, "MP.c");
   SetWindowMinSize(screen_width, screen_height);
   SetTargetFPS(FPS);
   InitAudioDevice();
 
   // TODO: remove once dynamic selection functionality works
   add_sound("assets/audio/test-piano.wav", sounds, 0);
+  add_sound("assets/audio/test-melody.wav", sounds, 1);
+  add_sound("assets/audio/test-pad.wav", sounds, 2);
 
   while (!WindowShouldClose()) {
     // update variables here
@@ -65,6 +67,7 @@ int run_mpc(void) {
     draw_settings(&SETTING_UI_DATA, INFO_DATA);
 
     EndDrawing();
+    UnloadDirectoryFiles(SOUND_FILES); // no memory leaks
   }
 
   CloseAudioDevice();
